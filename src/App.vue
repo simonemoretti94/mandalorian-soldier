@@ -23,6 +23,10 @@ export default {
 
 
       },
+      /* h1shadow f() values */
+      h1Shadow_1: 'h1_light',
+      h1Shadow_2: 'h1_dark',
+
       /* scale F variable */
       classScale1: '',
       classScale2: '',
@@ -86,13 +90,13 @@ export default {
     <!-- FIRST BLOCK -->
 
 
-    <div class="container">
+    <div class="container d-flex flex-column justify-content-between align-items-center">
 
       <!-- Mandalorian title -->
-      <h1 class="text-center text-white display-2 text-shadow">{{ slider.name }}</h1>
+      <h1 :class="activeSlide % 2 === 0 ? h1Shadow_1 : h1Shadow_2" class="text-center display-3">{{ slider.name }}</h1>
 
       <!-- DIV element containing carousel -->
-      <div class="card">
+      <div class="card col-10">
         <img :src="slider.images[activeSlide]" alt="slider">
       </div>
       {{ mounted() }}
@@ -102,7 +106,7 @@ export default {
     <!-- SECOND BLOCK -->
 
     <!-- DIV ELEMENT CONTAINING THUMBNAILS -->
-    <div class="col-12 d-flex flex-row justify-content-evenly mt-2">
+    <div class="col-11 d-flex flex-row justify-content-between mt-3">
       <img v-bind:class="index === activeSlide ? thumb1 : thumb2" :src="thumbnail"
         v-for="(thumbnail, index) in slider.images" :alt="`mandalorian-` + index" :key="`mandalorian-` + index">
     </div>
@@ -112,7 +116,7 @@ export default {
     <!-- THIRD BLOCK -->
 
     <!-- DIV element containing shifting buttons -->
-    <div class="col-8 navigator d-flex justify-content-between mt-2 mx-auto">
+    <div class="col-8 navigator d-flex justify-content-between mt-3 mx-auto">
 
       <button class="btn display-1 border rounded-2 text-center bg-warning me-1" :class="classScale1"
         @mouseenter="scaleF1()" @mouseleave="scaleF1()" @click="prev()">Previous</button>
@@ -125,6 +129,16 @@ export default {
 </template>
 
 <style >
+.h1_light {
+  color: white;
+  text-shadow: 2px 3px rgb(165, 165, 165);
+}
+
+.h2_dark {
+  color: rgb(70, 70, 70);
+  text-shadow: 2px 3px white;
+}
+
 .scale {
   transform: scale(.9);
 }
@@ -154,10 +168,12 @@ div.navigator>button:hover {
 }
 
 .thumbnail1 {
-  width: ((100% / 5)- 30px);
+  width: ((100% / 5)- 10px);
   height: 100px;
   border: solid .5px white;
   border-radius: 5px;
+  transform: scale(1.1);
+  filter: drop-shadow(2px 4px 6px black);
 }
 
 .thumbnail2 {
@@ -165,5 +181,7 @@ div.navigator>button:hover {
   height: 100px;
   border: solid .5px white;
   border-radius: 5px;
+  filter: grayscale(50%);
+  filter: blur(50%);
 }
 </style>
