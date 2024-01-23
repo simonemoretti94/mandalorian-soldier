@@ -173,7 +173,7 @@ div.navigator>button:hover {
   border: solid .5px white;
   border-radius: 5px;
   transform: scale(1.1);
-  filter: drop-shadow(2px 4px 6px black);
+  filter: drop-shadow(2px 4px 6px rgb(74, 74, 74));
 }
 
 .thumbnail2 {
