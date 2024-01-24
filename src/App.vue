@@ -97,7 +97,7 @@ export default {
 
       <!-- DIV element containing carousel -->
       <div class="card col-10">
-        <img :src="slider.images[activeSlide]" alt="slider">
+        <img :src="slider.images[activeSlide]" class="main-img" alt="slider">
       </div>
       {{ mounted() }}
 
@@ -139,6 +139,11 @@ export default {
   text-shadow: 2px 3px white;
 }
 
+.main-img {
+  height: 60vh;
+  width: 100%;
+}
+
 .scale {
   transform: scale(.9);
 }
@@ -168,16 +173,17 @@ div.navigator>button:hover {
 }
 
 .thumbnail1 {
-  width: ((100% / 5)- 10px);
+  width: ((100% / 5)- 100px);
   height: 100px;
   border: solid .5px white;
   border-radius: 5px;
   transform: scale(1.1);
   filter: drop-shadow(2px 4px 6px rgb(74, 74, 74));
+  z-index: 1;
 }
 
 .thumbnail2 {
-  width: ((100% / 5)- 30px);
+  width: ((100vw / 5)- 100px);
   height: 100px;
   border: solid .5px white;
   border-radius: 5px;
